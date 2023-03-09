@@ -22,5 +22,14 @@ function validarFormulario(e) {
     Post.detalle = detalle.value;
     Post.fecha = new Date();
     console.log(Post);
+    agregarPost();
   }
+}
+
+function agregarPost() {
+  Publicaciones.push({ ...Post });
+  console.log(Publicaciones);
+}
+function liberarObjeto(){
+  
 }
