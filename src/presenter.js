@@ -28,8 +28,31 @@ function validarFormulario(e) {
 
 function agregarPost() {
   Publicaciones.push({ ...Post });
+  mostrarPublicaciones();
+  formulario.reset();
+  liberarObjeto();
   console.log(Publicaciones);
 }
-function liberarObjeto(){
-  
+function liberarObjeto() {
+  (Post.titulo = ""), (Post.detalle = ""), (Post.fecha = "");
+}
+function mostrarPublicaciones() {
+  reload();
+  const divPublicaciones = document.querySelector("#publicaciones");
+  Publicaciones.forEach((post) => {
+    const { titulo, detalle, fecha } = post;
+    const parrafo = document.createElement("p");
+    parrafo.textContent = `${titulo} - ${detalle} `;
+    parrafo.dataset.id = fecha;
+    const hr = document.createElement("hr");
+    divPublicaciones.appendChild(parrafo);
+    divPublicaciones.appendChild(hr);
+  });
+}
+
+function reload() {
+  const divPublicaciones = document.querySelector("#publicaciones");
+  while (divPublicaciones.firstChild) {
+    divPublicaciones.removeChild(divPublicaciones.firstChild);
+  }
 }
