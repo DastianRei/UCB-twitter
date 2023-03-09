@@ -10,7 +10,7 @@ function validarFormulario(titulo, detalle) {
   if (titulo === "") {
     alert("No es posible publicar un post sin título");
     return;
-  } else if (titulo <= 50 && detalle <= 150) {
+  } else if (titulo.length <= 50 && detalle.length <= 150) {
     Post.titulo = titulo;
     Post.detalle = detalle;
     Post.fecha = new Date();
